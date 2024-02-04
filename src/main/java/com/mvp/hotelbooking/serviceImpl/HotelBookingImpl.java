@@ -12,6 +12,7 @@ import com.mvp.hotelbooking.beans.UserUpdateBookingRequest;
 import com.mvp.hotelbooking.dao.HotelBookingDao;
 import com.mvp.hotelbooking.exception.HotelBookingException;
 import com.mvp.hotelbooking.jpa.model.Booking;
+import com.mvp.hotelbooking.jpa.model.Hotel;
 import com.mvp.hotelbooking.jpa.model.User;
 import com.mvp.hotelbooking.service.HotelBooking;
 
@@ -63,5 +64,10 @@ public class HotelBookingImpl implements HotelBooking {
 	@Override
 	public void updateUserHotelBooking(UserUpdateBookingRequest userUpdateBookingRequest) {
 		hotelBookingDao.updateUserBooking(userUpdateBookingRequest);
+	}
+
+	@Override
+	public List<Hotel> searchAllHotelsForBooking() {
+		return hotelBookingDao.findAllHotels();
 	}
 }

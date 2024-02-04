@@ -1,5 +1,6 @@
 package com.mvp.hotelbooking.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
@@ -69,5 +70,10 @@ public class HotelBookingDaoImpl implements HotelBookingDao{
 		updateHotelBooking.setHotel(hotel);
 		user.getBookings().add(updateHotelBooking);
 		userHotelBookingRepository.save(user);
+	}
+
+	@Override
+	public List<Hotel> findAllHotels() {
+		return hotelRepository.findAll();
 	}
 }

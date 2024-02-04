@@ -1,10 +1,12 @@
 package com.mvp.hotelbooking.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.mvp.hotelbooking.beans.UserBookingRequest;
 import com.mvp.hotelbooking.beans.UserBookings;
 import com.mvp.hotelbooking.beans.UserUpdateBookingRequest;
+import com.mvp.hotelbooking.jpa.model.Hotel;
 import com.mvp.hotelbooking.jpa.model.User;
 
 public interface HotelBookingDao {
@@ -14,4 +16,5 @@ public interface HotelBookingDao {
 	Optional<User> findUserByID(String userID);
 	void updateUserBooking(User updatedUser);
 	void updateUserBooking(UserUpdateBookingRequest userUpdateBookingRequest);
+	List<Hotel> findAllHotels();
 }

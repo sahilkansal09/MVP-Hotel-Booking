@@ -1,5 +1,7 @@
 package com.mvp.hotelbooking.controller;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import com.mvp.hotelbooking.beans.UserBookingRequest;
 import com.mvp.hotelbooking.beans.UserBookings;
 import com.mvp.hotelbooking.beans.UserUpdateBookingRequest;
 import com.mvp.hotelbooking.exception.HotelBookingException;
+import com.mvp.hotelbooking.jpa.model.Hotel;
 import com.mvp.hotelbooking.service.HotelBooking;
 
 import lombok.RequiredArgsConstructor;
@@ -42,6 +45,21 @@ public class UserHotelBookingController {
 			return ResponseEntity.badRequest().body(exception.getMessage());
 		}catch(Exception exception){
 			return ResponseEntity.internalServerError().body("Error Occurred!! Please re-try!!");
+		}
+	}
+
+	/**
+	 * This Controller helps in searching of new hotel booking
+	 * @return
+	 */
+	@GetMapping("/search-hotels")
+	public ResponseEntity<List<Hotel>> searchHotelBooking(){
+		try {
+			return ResponseEntity.ok(hotelBooking.searchAllHotelsForBooking());
+		}catch(HotelBookingException exception){
+			return ResponseEntity.badRequest().build();
+		}catch(Exception exception){
+			return ResponseEntity.internalServerError().build();
 		}
 	}
 
